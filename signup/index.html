@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .main{
+            width: 50%;
+            margin: auto;
+        }
+        h1,p{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #submit{
+            text-decoration: none;
+            border: 1px solid black;
+            border-radius: 7px;
+            background-color:gray;
+            color: rgb(255, 255, 255);
+            padding: 4px 4px 4px 4px;
+        }
+        input{
+            width: 90%;
+            height: 20px;
+            border-radius: 6px;
+        }
+
+        button{
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div><h1>Sig Up</h1></div>
+        <div class="namediv">
+            <p>Full name</p>
+            <input type="text" id="name" placeholder="Enter your full name"/>
+        </div>
+        <div class="emaildiv">
+            <p>Email</p>
+            <input type="email" id="email" placeholder="Enter email"/>
+        </div>
+        <div class="pass">
+            <p>Password</p>
+            <input type="password" id="password" placeholder="Enter Password">
+        </div>
+        <div id="btn">
+            <br>
+            
+            <!-- <div class="loginpage"><button id="submit" value="submit"submit></button></div> -->
+            <button id="submit" onclick="myfun()">submit</button>
+        </div>
+    </div>
+    </body>
+</html>
+
+<script>
+    
+    
+    
+    var submit =document.querySelector("#submit").addEventListener("click",myfun)
+
+    function myfun(){
+        event.preventDefault();
+        
+    var name= document.querySelector("#name").value;
+    var email= document.querySelector("#email").value;
+    var password= document.querySelector("#password").value;
+    var obj={
+            name:name,
+            email:email,
+            password:password,
+        } 
+        localStorage.setItem("userdata",JSON.stringify(obj))
+        window.location.href="login.html"
+    }
+</script>
+
+

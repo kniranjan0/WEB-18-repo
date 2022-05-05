@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .main{
+            width: 50%;
+            margin: auto;
+        }
+        h1,p{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #submit{
+            text-decoration: none;
+            border: 1px solid black;
+            border-radius: 7px;
+            background-color:gray;
+            color: rgb(255, 255, 255);
+            padding: 4px 4px 4px 4px;
+        }
+        input{
+            width: 90%;
+            height: 20px;
+            border-radius: 6px;
+        }
+
+        button{
+            margin-top: 20px;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="img">
+            <img src="" alt="">
+        </div>
+        <div><h1>Sign In</h1></div>
+        <div class="emaildiv">
+            <p>Email</p>
+            <input type="text" id="email" placeholder="enter a email" />
+        </div>
+        <div class="pass">
+            <p>Password</p> 
+            <input type="password" id="password" placeholder="enter password" />
+        </div>
+        <div class="submit">
+            <button id="submit">SIGN IN</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // var userdata=localStorage.getItem(JSON.parse("userdata"))
+    var data=JSON.parse(localStorage.getItem("userdata"))
+    console.log(data)
+
+    document.querySelector(".submit").addEventListener("click",myfun);
+    function myfun(){
+        event.preventDefault();
+
+        var email=document.querySelector("#email").value;
+        var password=document.querySelector("#password").value;
+
+        if(data.email ==email && data.password==password){
+            alert("Log In successfully");
+        }
+        else{
+            alert("create account")
+        }
+    }
+</script>
