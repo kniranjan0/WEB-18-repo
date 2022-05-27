@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 80%;
+            height: 700px;
+            display: flex;
+            /* justify-content: space-around; */
+        }
+        p{
+            margin: auto;
+            text-align: center;
+
+        }
+        img{
+            width: 100%;
+        }
+        .main>div{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-right: 10px;
+            height:fit-content;
+            width: 40%
+        }
+        .main>div>div{
+            display: flex;
+        }
+        button{
+            border: none;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            padding: 4px 9px 4px 9px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+
+    </div>
+</body>
+</html>
+<script>
+    var data=JSON.parse(localStorage.getItem("Products"))||[];
+    display(data)
+    function display(data){
+    data.forEach(function(ele,index){
+        let div=document.createElement("div");
+
+        let divtop=document.createElement("div");
+        let divcate=document.createElement("div");
+        let divimg=document.createElement("div");
+        let divrem=document.createElement("div");
+        let divsol=document.createElement("div");
+
+
+        let h2=document.createElement("h2");
+        h2=ele.name;
+        let p1=document.createElement("p");
+        p1=ele.category;
+        let img=document.createElement("img");
+        img.src=ele.image;
+        let gender=document.createElement("p");
+        gender=ele.gender;
+        let sole=document.createElement("p");
+        sole=ele.sole;
+
+        let remove=document.createElement("button");
+        remove.setAttribute("id","remove")
+        remove.innerHTML="Remove"
+
+        remove.addEventListener("click",function(){
+            // remove.style.backgroundColor="red";
+            del(ele,index);
+        })
+
+        let sold=document.createElement("button");
+        sold.setAttribute("id","sold-"+ele.id)
+        sold.innerHTML="sold";
+        sold.style.backgroundColor="green"
+        sold.addEventListener("click",function(){
+            sale(ele);
+        })
+
+        divtop.append(h2)
+        divcate.append(p1);
+        divimg.append(img);
+        divrem.append(remove);
+        divsol.append(sold)
+
+        div.append(divtop,divcate,divimg,gender,sole,divrem,divsol)
+        
+
+        document.querySelector(".main").append(div);
+
+    })
+}
+
+function del(ele,index){
+    data.splice(index,1)
+    localStorage.setItem("Products",JSON.stringify(data))
+    window.location.reload();
+
+}
+var flag=true;
+let index;
+function sale(ele){
+    var temp=JSON.parse(localStorage.getItem("Products"))||[];
+
+    let obj;
+    for(let i=0;i<temp.length;i++){
+        if(temp[i].id==ele.id){
+            obj=ele;
+            index=i;
+            console.log(ele.id)
+        }
+    }
+    if(obj.sold==true){
+        obj.sold=false;
+    }
+    else{
+        obj.sold=true;
+    }
+    console.log(index)
+
+    if(obj.sold==true){
+        document.querySelector("#sold-"+ele.id).style.backgroundColor="red"
+    }
+    else{
+        document.querySelector("#sold-"+ele.id).style.backgroundColor="green"
+    }
+
+    data.splice(index,1);
+    data.push(obj);
+    localStorage.setItem("Products",JSON.stringify(data));
+
+}
+
+
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    let one={
+        name:"amar",
+        skill:"singer "
+    }
+    let two={
+        name:"akbar",
+        skill:"chef"
+    }
+    let three={
+        name:"anthony",
+        skill:"magician"
+    }
+
+    function borrowSkill(name,skill){
+        console.log(` Hi i am ${name} and i am a ${this.skill}`);
+    }
+    borrowSkill.call(three,"amar");
+</script>

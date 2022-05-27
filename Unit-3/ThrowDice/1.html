@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function myArrary(){
+  this.length=arguments.length;
+  for(let i=0;i<arguments.length;i++){
+    this[i]=arguments[i];
+  }
+}
+
+let arr=new myArrary(1,2,3,4,5)
+
+
+
+myArrary.prototype.push=function(value){
+  this[this.length]=value;
+  this.length++;
+}
+
+myArrary.prototype.pop=function(){
+  delete this[this.length-1]
+  this.length--;
+}
+myArrary.prototype.print=function(){
+  console.log(Object.values(this));
+}
+
+arr.push(1)
+arr.push(4)
+arr.push(9)
+arr.pop(2)
+arr.print()
+</script>

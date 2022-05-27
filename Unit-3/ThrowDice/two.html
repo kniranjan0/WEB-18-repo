@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="submitProduct(event)" id="products">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="brand" placeholder="Brand">
+        <input type="number" id="price" placeholder="Price">
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+<script>
+    function product(name, brand, price) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+
+    }
+
+    let arr=[];
+
+    function submitProduct(e) {
+        e.preventDefault()
+
+
+        let form = document.getElementById("products");
+        let name = form.name.value;
+        let brand = form.brand.value;
+        let price = form.price.value;
+
+        let p = new product(name, brand, price)
+        arr.push(p);
+        console.log(arr)
+    } 
+
+// ----------------- CALL, APPLY, BIND ---------------->>>>>>>
+
+
+    let bedroom={
+        name:"badroom",
+        purpose:"sleep",
+        // food:function(food){
+        //     console.log(`serving $(food) in ${this.name}`) // String Literal
+        //     // console.log("serving"+food+"in"+this.name)
+        // },
+    };
+
+    let livingroom={
+        name:"living room",
+        purpose:"rest"
+    }
+    function food(food){
+        console.log(`serving $(food) in ${this.name}`);
+    }
+
+    // col the function obj in single perameeter
+    food.call("pizza");
+    food.call("livingroom");
+
+// same the call but its more information 
+    food.apply(bedroom,["pizza"]);
+    food.apply(livingroom,["pizza"]);
+
+// --------- return function ---------------
+    let f1=  food.bind(bedroom,"pizza");
+    let f2= food.bind(livingroom,"pizza");
+
+    f1();
+    f2();
+
+
+
+
+
+//     function Abc(a,b,c){
+//     let obj={};
+//     this.name=a;
+//     this.age=b;
+//     this.price=c;
+// }
+
+
+ // const product={
+    //     barnd:"nike",
+    //     logo:"n",
+    //     seller:"flipkart"
+    // }
+
+    // const s1=Object.create(product,{type:{value:"man"}})
+    // const s2=Object.create(product,{type:{value:"woman"}})
+
+    // function Product(type){
+    //     this.barnd="nike";
+    //     this.type=type
+    //     (this.logo="n"),
+    //     (this.seller="flipkart")
+    // }
+    // Product.prototype.discount=function(){
+    //     console.log("50% discount")
+    // }
+    // let p1=new Product("shoe");
+    // let p2=new Product("sneaker");
+
+    // pi.discount();
+</script>
