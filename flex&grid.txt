@@ -1,0 +1,9 @@
+Flexbox is a one-dimensional layout system that we can use to create a row or a column axis layout. It makes our life easier to design and build responsive web pages without having to use tricky hacks and a lot of float and position properties in our CSS code.
+
+
+->small design to implement: Flexbox is ideal when you have a small layout design to implement, with a few rows or a few columns
+
+
+CSS grid is a two-dimensional layout system, we can work withs rows and columns together, which means that it opens a lot of different possibilities to build more complex and organized design systems, without having to fall back to some “hacky ways” that we were using in the past.
+
+-> complex design to implement: In some use cases, we have complex designs to implement, and that’s when the magic of CSS grid shows itself. The two-dimensional layout system here is perfect to create a complex design,
